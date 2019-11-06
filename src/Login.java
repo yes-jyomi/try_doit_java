@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -55,13 +56,13 @@ public class Login {
         int result = checkAccount(id, pwd);
         if (result == 1) {
             // 성공
-            System.out.println(id + "님, 로그인 되었습니다.");
+            JOptionPane.showMessageDialog(null, id + "님, 로그인 되었습니다.");
         } else if (result == 2) {
             // 아이디 오류
-            System.out.println("id를 다시 입력해주세요.");
+            JOptionPane.showMessageDialog(null, "id를 다시 입력해주세요.");
         } else if (result == 3) {
             // 비밀번호 오류
-            System.out.println("password를 다시 입력해주세요.");
+            JOptionPane.showMessageDialog(null, "password를 다시 입력해주세요.");
         }
     }
 

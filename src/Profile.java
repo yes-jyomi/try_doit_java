@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.sql.*;
 
 public class Profile {
@@ -36,35 +37,12 @@ public class Profile {
                 pwd = rs.getString("pwd");
                 name = rs.getString("name");
             }
-            System.out.println(prof_num + " " + pwd + " " + name);
 
         } catch (SQLException e) {
             System.out.println("SQLException");
             System.out.println(e);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 
@@ -85,9 +63,9 @@ public class Profile {
             pstmt.setString(1, id);
             rs = pstmt.executeQuery();
             if (rs.next())
-                System.out.println(name + "이 추가 되었습니다.");
+                JOptionPane.showMessageDialog(null, name + "이 추가 되었습니다.");
             else
-                System.out.println("이름 추가 실패");
+                JOptionPane.showMessageDialog(null, "이름 추가 실패");
 
         } catch (SQLException e) {
             System.out.println("SQLException");

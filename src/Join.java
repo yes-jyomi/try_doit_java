@@ -39,11 +39,11 @@ public class Join {
                 rs = pstmt.executeQuery();
 
                 if (rs.next())
-                    System.out.println("가입 완료");
+                    JOptionPane.showMessageDialog(null, "가입 완료");
                 else
-                    System.out.println("가입 실패");
+                    JOptionPane.showMessageDialog(null, "가입 실패");
             } else {
-                System.out.println("가입 실패");
+                JOptionPane.showMessageDialog(null, "가입 실패");
             }
 
         } catch (Exception e) {
@@ -60,9 +60,9 @@ public class Join {
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                System.out.println("다른 아이디를 사용해주세요.");
+                JOptionPane.showMessageDialog(null, "다른 아이디를 사용해주세요.");
             } else {
-                System.out.println("사용 가능한 아이디입니다.");
+                JOptionPane.showMessageDialog(null, "사용 가능한 아이디입니다.");
 
                 int res = pwdCk(pwd, pk);
                 if (res == 1)
@@ -80,9 +80,9 @@ public class Join {
         int r = 0;
         if (pwd.equals(pk)) {
             r = 1;
-            System.out.println("비밀번호가 맞습니다.");
+            JOptionPane.showMessageDialog(null, "비밀번호가 맞습니다.");
         } else {
-            System.out.println("비밀번호를 다시 확인해주세요.");
+            JOptionPane.showMessageDialog(null, "비밀번호를 다시 확인해주세요.");
             r = 0;
         }
         return r;

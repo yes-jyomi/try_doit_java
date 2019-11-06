@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ public class TaskManager {
     ArrayList<String> tasks = new ArrayList<>();
     static int count = 0;
 
-    private TaskManager() {
+    public TaskManager() {
         try {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
@@ -29,43 +30,21 @@ public class TaskManager {
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
 
-            if (rs.next()) {
+            while(rs.next()) {
                 tasks.add(rs.getString("content"));
             }
-            System.out.println(tasks);
+//            System.out.println(tasks);
 
         } catch (SQLException e) {
             System.out.println("SQLException");
             System.out.println(e);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
 
     }
 
-    private void addTask(String content) {
+    public void addTask(String content) {
         try {
             String sql = "INSERT INTO task(listnum, content) VALUES(?, ?)";
             pstmt = conn.prepareStatement(sql);
@@ -73,31 +52,16 @@ public class TaskManager {
             pstmt.setString(2, content);
             pstmt.executeUpdate();
 
-            System.out.println("추가 완료");
+            JOptionPane.showMessageDialog(null, "추가 완료");
 
         } catch (Exception e) {
-            System.out.println("추가 실패");
+            JOptionPane.showMessageDialog(null, "추가 실패");
             e.printStackTrace();
-        } finally {
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
 
     }
 
-    private void updateTask(int listnum, String content, int percent) {
+    public void updateTask(int listnum, String content, int percent) {
         int result = checkTask(listnum);
 
         try {
@@ -116,12 +80,12 @@ public class TaskManager {
                         pstmt.setInt(2, percent);
                         pstmt.setInt(3, listnum);
                         pstmt.executeUpdate();
-                        System.out.println("업데이트 되었습니다.");
+                        JOptionPane.showMessageDialog(null, "업데이트 되었습니다.");
                     } else {
-                        System.out.println("리스트 번호가 맞지 않습니다.");
+                        JOptionPane.showMessageDialog(null, "리스트 번호가 맞지 않습니다.");
                     }
                 } else {
-                    System.out.println("리스트 번호가 없습니다.");
+                    JOptionPane.showMessageDialog(null, "리스트 번호가 없습니다.");
                 }
             }
         } catch (SQLException e) {
@@ -129,33 +93,11 @@ public class TaskManager {
             System.out.println(e);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
 
     }
 
-    private int getListnum(String content) {
+    public int getListnum(String content) {
         int lm = 0;
 
         try {
@@ -173,33 +115,11 @@ public class TaskManager {
             System.out.println(e);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
         return lm;
     }
 
-    private int checkTask(int listnum) {
+    public int checkTask(int listnum) {
         int lm = 0;
 
         try {
@@ -223,33 +143,11 @@ public class TaskManager {
         } catch (Exception e) {
             e.printStackTrace();
             lm = 0;
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
         return lm;
     }
 
-    private int findListnum(String content) {
+    public int findListnum(String content) {
         int lm = 0;
 
         try {
@@ -267,33 +165,11 @@ public class TaskManager {
             System.out.println(e);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
         return lm;
     }
 
-    private int deleteTask(int listnum) {
+    public int deleteTask(int listnum) {
         int result = checkTask(listnum);
         int r = 0;
 
@@ -304,10 +180,10 @@ public class TaskManager {
                 pstmt.setInt(1, listnum);
                 pstmt.executeUpdate();
 
-                System.out.println("삭제 완료");
+                JOptionPane.showMessageDialog(null, "삭제 완료");
                 r = 1;
             } else {
-                System.out.println("삭제 실패");
+                JOptionPane.showMessageDialog(null, "삭제 실패");
                 r = 0;
             }
         } catch (SQLException e) {
@@ -315,28 +191,12 @@ public class TaskManager {
             System.out.println(e);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
         return r;
     }
 
-    private int completeTask(String task) {
+    public int completeTask(String task) {
         count ++;
-        System.out.println(count + "카운트");
 
         int listnum = findListnum(task);
         int result = deleteTask(listnum);
@@ -350,7 +210,7 @@ public class TaskManager {
         return r;
     }
 
-    private int getCount() {
+    public int getCount() {
         return count;
     }
 }

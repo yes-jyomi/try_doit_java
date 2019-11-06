@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="ClosetScreen">
+  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="6" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="1328" height="674"/>
+    </constraints>
+    <properties>
+      <background color="-1"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="4d49d" class="javax.swing.JLabel" binding="head">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <icon value="head.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="d608b" class="javax.swing.JLabel" binding="top">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <icon value="top.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="80796" class="javax.swing.JLabel" binding="bottom">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <icon value="bottom.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="8433c" class="javax.swing.JLabel" binding="shoes">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <icon value="shoes.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="9cffe" class="javax.swing.JTextField" binding="chName">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+        </properties>
+      </component>
+      <component id="6c03" class="javax.swing.JButton" binding="btName">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <text value="확인"/>
+        </properties>
+      </component>
+      <component id="6b5c2" class="javax.swing.JLabel" binding="lb1">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <text value="ITEMS"/>
+        </properties>
+      </component>
+      <component id="c5058" class="javax.swing.JButton" binding="btOftenUsed">
+        <constraints>
+          <grid row="1" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <text value="많이 쓴 아이템"/>
+        </properties>
+      </component>
+      <component id="f1233" class="javax.swing.JRadioButton" binding="rd1">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <enabled value="false"/>
+          <icon value="a.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="3e76b" class="javax.swing.JRadioButton" binding="rd2">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <enabled value="false"/>
+          <icon value="a.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="460c1" class="javax.swing.JRadioButton" binding="rd3">
+        <constraints>
+          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <enabled value="false"/>
+          <icon value="a.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="cd078" class="javax.swing.JRadioButton" binding="rd4">
+        <constraints>
+          <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <enabled value="false"/>
+          <icon value="a.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="36eac" class="javax.swing.JRadioButton" binding="rd5">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <enabled value="false"/>
+          <icon value="a.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="429eb" class="javax.swing.JRadioButton" binding="rd6">
+        <constraints>
+          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <enabled value="false"/>
+          <icon value="a.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="2dbbe" class="javax.swing.JRadioButton" binding="rd7">
+        <constraints>
+          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <enabled value="false"/>
+          <icon value="a.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="d35ef" class="javax.swing.JRadioButton" binding="rd8">
+        <constraints>
+          <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <enabled value="false"/>
+          <icon value="a.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="ad794" class="javax.swing.JRadioButton" binding="rd9">
+        <constraints>
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <enabled value="false"/>
+          <icon value="a.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="5803d" class="javax.swing.JRadioButton" binding="rd10">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <enabled value="false"/>
+          <icon value="a.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="fd8af" class="javax.swing.JRadioButton" binding="rd11">
+        <constraints>
+          <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <enabled value="false"/>
+          <icon value="a.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="3fcda" class="javax.swing.JRadioButton" binding="rd12">
+        <constraints>
+          <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <enabled value="false"/>
+          <icon value="a.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="8a454" class="javax.swing.JRadioButton" binding="rd13">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <enabled value="false"/>
+          <icon value="a.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="1c3f3" class="javax.swing.JRadioButton" binding="rd14">
+        <constraints>
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <enabled value="false"/>
+          <icon value="a.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="2a550" class="javax.swing.JRadioButton" binding="rd15">
+        <constraints>
+          <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <enabled value="false"/>
+          <icon value="a.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="bd3c7" class="javax.swing.JRadioButton" binding="rd16">
+        <constraints>
+          <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <enabled value="false"/>
+          <icon value="a.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+  <buttonGroups>
+    <group name="selected_hat">
+      <member id="8e1de"/>
+      <member id="8e1de"/>
+      <member id="2fbf8"/>
+      <member id="70795"/>
+      <member id="a137f"/>
+      <member id="f1233"/>
+      <member id="3e76b"/>
+      <member id="460c1"/>
+      <member id="cd078"/>
+    </group>
+    <group name="selected_top">
+      <member id="1c2af"/>
+      <member id="1c2af"/>
+      <member id="16964"/>
+      <member id="e5c22"/>
+      <member id="ac58a"/>
+      <member id="36eac"/>
+      <member id="429eb"/>
+      <member id="2dbbe"/>
+      <member id="d35ef"/>
+    </group>
+    <group name="selected_bottom">
+      <member id="cf69f"/>
+      <member id="cf69f"/>
+      <member id="1e2dd"/>
+      <member id="8b98"/>
+      <member id="3fc07"/>
+      <member id="ad794"/>
+      <member id="5803d"/>
+      <member id="fd8af"/>
+      <member id="3fcda"/>
+    </group>
+    <group name="selected_shoes">
+      <member id="e2d48"/>
+      <member id="e2d48"/>
+      <member id="bacc9"/>
+      <member id="eb0bb"/>
+      <member id="7dec6"/>
+      <member id="8a454"/>
+      <member id="1c3f3"/>
+      <member id="2a550"/>
+      <member id="bd3c7"/>
+    </group>
+  </buttonGroups>
+</form>
