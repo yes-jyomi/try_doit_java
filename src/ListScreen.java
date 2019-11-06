@@ -111,7 +111,7 @@ public class ListScreen {
 //                            DB와 연동하여 할 일 완료하는 함수 호출
                             int result = tm.completeTask(select);
 //                            count 가져옴
-                            count++;
+                            count = tm.getCount();
 
                             lbBox.removeAll();
 
