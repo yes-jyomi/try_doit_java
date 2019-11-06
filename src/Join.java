@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -20,9 +21,8 @@ public class Join {
             e.printStackTrace();
         }
     }
-
-    public void signUp(String id, String pwd) {
-        int result = nullCheck(id);
+    public void signUp(String id, String pwd, String pk) {
+        int result = nullCheck(id, pwd, pk);
         try {
             if (result == 1) {
                 String sql = "INSERT INTO profile(prof_num, id, pwd) VALUES (?, ?, ?)";
@@ -41,6 +41,8 @@ public class Join {
                     System.out.println("가입 완료");
                 else
                     System.out.println("가입 실패");
+            } else {
+                System.out.println("가입 실패");
             }
 
         } catch (Exception e) {
@@ -48,7 +50,7 @@ public class Join {
         }
     }
 
-    public int nullCheck(String id) {
+    public int nullCheck(String id, String pwd, String pk) {
         int chk = 0;
         try {
             String sql = "SELECT id FROM profile WHERE id = ?";
@@ -60,7 +62,12 @@ public class Join {
                 System.out.println("다른 아이디를 사용해주세요.");
             } else {
                 System.out.println("사용 가능한 아이디입니다.");
-                chk = 1;
+
+                int res = pwdCk(pwd, pk);
+                if (res == 1)
+                    chk = 1;
+                else
+                    chk = 0;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -68,15 +75,22 @@ public class Join {
         return chk;
     }
 
+    private int pwdCk(String pwd, String pk) {
+        int r = 0;
+        if (pwd.equals(pk)) {
+            r = 1;
+            System.out.println("비밀번호가 맞습니다.");
+        } else {
+            System.out.println("비밀번호를 다시 확인해주세요.");
+            r = 0;
+        }
+        return r;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("id 입력 : ");
-        String id = sc.next();
-        System.out.print("pwd 입력 : ");
-        String pwd = sc.next();
-
         Join j = new Join();
-        j.signUp(id, pwd);
+        j.signUp("a", "c", "cd");
     }
 }

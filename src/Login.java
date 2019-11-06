@@ -5,9 +5,10 @@ import java.sql.ResultSet;
 import java.util.Scanner;
 
 public class Login {
+
     private final String JDBC_DRIVER = "org.gjt.mm.mysql.Driver";
-    private final String DB_URL = "jdbc:mysql://localhost:3306/project?useSSL=false";
-    private final String USERNAME = "root";
+    private final String DB_URL = "jdbc:mysql://localhost:3306/project?serverTimezone=Asia/Seoul&useSSL=false";
+    private final String USER_NAME = "root";
     private final String PASSWORD = "mirim2";
 
     Connection conn = null;
@@ -17,7 +18,7 @@ public class Login {
     public Login() {
         try {
             Class.forName(JDBC_DRIVER);
-            conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+            conn = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
         } catch (Exception e) {
             System.out.println("드라이버 로딩 및 Connection 오류");
             e.printStackTrace();
