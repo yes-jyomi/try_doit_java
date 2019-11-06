@@ -25,7 +25,7 @@ public class Login {
         }
     }
 
-    public int checkAccount(String inId, String inPwd) {
+    private int checkAccount(String inId, String inPwd) {
         int result = 0;
         String id = "", pwd = "";
         try {
@@ -65,15 +65,15 @@ public class Login {
         }
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("id 입력 : ");
-        String id = sc.next();
-        System.out.print("pwd 입력 : ");
-        String pwd = sc.next();
-
-        Login l = new Login();
-        l.signIn(id, pwd);
-    }
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//
+//        System.out.print("id 입력 : ");
+//        String id = sc.next();
+//        System.out.print("pwd 입력 : ");
+//        String pwd = sc.next();
+//
+//        Login l = new Login();
+//        l.signIn(id, pwd);
+//    }
 }

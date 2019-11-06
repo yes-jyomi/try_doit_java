@@ -21,6 +21,7 @@ public class Join {
             e.printStackTrace();
         }
     }
+
     public void signUp(String id, String pwd, String pk) {
         int result = nullCheck(id, pwd, pk);
         try {
@@ -50,7 +51,7 @@ public class Join {
         }
     }
 
-    public int nullCheck(String id, String pwd, String pk) {
+    private int nullCheck(String id, String pwd, String pk) {
         int chk = 0;
         try {
             String sql = "SELECT id FROM profile WHERE id = ?";
@@ -87,10 +88,10 @@ public class Join {
         return r;
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        Join j = new Join();
-        j.signUp("a", "c", "cd");
-    }
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//
+//        Join j = new Join();
+//        j.signUp("a", "c", "cd");
+//    }
 }
