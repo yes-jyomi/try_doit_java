@@ -26,6 +26,7 @@ public class Login {
         }
     }
 
+//    계정 확인
     private int checkAccount(String inId, String inPwd) {
         int result = 0;
         String id = "", pwd = "";
@@ -52,6 +53,7 @@ public class Login {
         return result;
     }
 
+//    로그인하는 함수
     public void signIn(String id, String pwd) {
         int result = checkAccount(id, pwd);
         if (result == 1) {

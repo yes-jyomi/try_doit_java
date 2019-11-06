@@ -34,7 +34,7 @@ public class ListScreen {
     private JTextField task;
     private JPanel panel;
 
-    static int count;
+    static int count=0;
 
     public ListScreen() {
         JFrame frame = new JFrame("리스트 화면");
@@ -50,8 +50,10 @@ public class ListScreen {
         btShowList.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+//                목록 지웠다가
                 lbBox.removeAll();
 
+//                다시 JList 에 추가해서 보여주기
                 TaskManager tm = new TaskManager();
                 DefaultListModel<String> m = new DefaultListModel<>();
                 for (int i = 0; i < tm.tasks.size(); i++) {
@@ -68,10 +70,13 @@ public class ListScreen {
             public void actionPerformed(ActionEvent e) {
                 TaskManager tm = new TaskManager();
 
+//                입력된 할 일을 가져옴.
                 String lb = task.getText();
+//                비었으면 할 일이 비었다고 안내
                 if (lb.equals(""))
                     JOptionPane.showMessageDialog(null, "할 일이 비었네요 ~");
                 else {
+//                    할 일 목록에 추가 후 다시 JList 에 보여줌
                     tm.tasks.add(lb);
 
                     lbBox.removeAll();
@@ -83,6 +88,7 @@ public class ListScreen {
                     }
                     lbBox.setModel(m);
 
+//                    DB 에 넣기 위해 TaskManager 에 있는 addTask() 호출
                     tm.addTask(lb);
                 }
             }
@@ -96,12 +102,16 @@ public class ListScreen {
                 btComplete.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent ae) {
+//                        JList 에서 선택된 값이 있을 때
                         if (!e.getValueIsAdjusting()) {
                             TaskManager tm = new TaskManager();
 
+//                            하나만 선택되어 select 에 선택된 값 저장
                             String select = lbBox.getSelectedValuesList().get(0).toString();
+//                            DB와 연동하여 할 일 완료하는 함수 호출
                             int result = tm.completeTask(select);
-                            count = tm.getCount();
+//                            count 가져옴
+                            count++;
 
                             lbBox.removeAll();
 
@@ -114,6 +124,7 @@ public class ListScreen {
                             }
                             lbBox.setModel(m);
 
+//                            할 일이 완료가 되었으면 ClosetScreen 띄우기
                             if (result == 1) {
                                 new ClosetScreen(count);
                             }
@@ -136,6 +147,7 @@ public class ListScreen {
 
                             String task = lbBox.getSelectedValuesList().get(0).toString();
 
+//                            tasks 에 있는 task 삭제
                             if (tm.tasks.contains(task)) {
                                 int num = tm.tasks.indexOf(task);
                                 tm.tasks.remove(num);
@@ -152,6 +164,7 @@ public class ListScreen {
                             }
                             lbBox.setModel(m);
 
+//                            DB 와 연동하여 삭제하는 함수 호출
                             int listnum = tm.getListnum(task);
                             tm.deleteTask(listnum);
                         }
@@ -173,14 +186,19 @@ public class ListScreen {
                             String content;
 
                             String lb = lbBox.getSelectedValuesList().get(0).toString();
+//                            할 일을 수정하지 않았을 때
                             if (lb.equals(upTask.getText())) {
                                 content = lb;
+//                            할 일을 수정했을 때
                             } else {
+//                                기존에 있던 할 일을 지우고
                                 tm.tasks.remove(lb);
+//                                수정한 할 일을 추가
                                 tm.tasks.add(upTask.getText());
                                 content = upTask.getText();
                             }
 
+//                            퍼센트도 입력받은 거 정리
                             int per = 0;
                             if (percent.getText().equals("")) {
                                 per = 0;
@@ -188,6 +206,8 @@ public class ListScreen {
                                 per = Integer.parseInt(percent.getText());
                             }
                             int listnum = tm.getListnum(lb);
+
+//                            DB 와 연동하여 업데이트하는 함수 호출
                             tm.updateTask(listnum, content, per);
 
                             lbBox.removeAll();
@@ -218,6 +238,7 @@ public class ListScreen {
                             TaskManager tm = new TaskManager();
 
                             String task = lbBox.getSelectedValuesList().get(0).toString();
+//                            선택한 항목을 Doing Tasks 에 있는 수정할 수 있는 공간에 보여줌.
                             upTask.setText("");
                             upTask.setText(task);
                         }
@@ -226,10 +247,12 @@ public class ListScreen {
             }
         });
 
+//        JList 정렬해서 보여주는 함수
         btSort.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 TaskManager tm = new TaskManager();
+//                tasks 에 있는 값을 정렬함.
                 Collections.sort(tm.tasks);
 
                 lbBox.removeAll();
@@ -243,9 +266,11 @@ public class ListScreen {
             }
         });
 
+//        오픈 클로젯 버튼 클릭 시
         btOpen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+//                ClosetScreen 호출
                 new ClosetScreen(count);
             }
         });

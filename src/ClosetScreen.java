@@ -92,14 +92,22 @@ public class ClosetScreen {
         selected_bottom.add(rd7);
         selected_bottom.add(rd8);
 
+//        이름 설정한 거 있으면 가져옴
+        Profile p = new Profile();
+        String name = p.getChName();
+        chName.setText(name);
+
         frame.setPreferredSize(new Dimension(1500, 800));
         frame.pack();
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
+//        라디오버튼1 눌렀을 때
         rd1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+//                count(할 일을 완료한 횟수) 가 15 이상이면 라디오 버튼 클릭 시 옷 입히기 가능.
+//                나머지 rd addActionListener 도 숫자만 다르고 같은 내용.
                 if (count >= 15) {
                     ImageIcon ii = new ImageIcon(ClosetScreen.class.getResource(item_hat[0]));
                     head.setIcon(ii);
@@ -258,20 +266,23 @@ public class ClosetScreen {
             }
         });
 
+//        많이 사용한 아이템 버튼 클릭 시
         btOftenUsed.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+//                사용된 아이템에 중복된 횟수를 각각 구함.
                 int h1 = Collections.frequency(used_hat, item_hat[0]);
                 int h2 = Collections.frequency(used_hat, item_hat[1]);
                 int h3 = Collections.frequency(used_hat, item_hat[2]);
                 int h4 = Collections.frequency(used_hat, item_hat[3]);
 
+//                배열에 넣어서 최댓값을 구하고, 그 값에 알맞는 파일 이름(result)을 구함. 반복됨
                 int[] array = {h1, h2, h3, h4};
                 int max = array[0];
                 String result = "없음";
                 for(int i=0;i<array.length;i++) {
-                    if (max <= array[i]) {
-                        //max의 값보다 array[i]이 크면 max = array[i], result = item_hat[i]
+                    if (max < array[i]) {
+//                        max의 값보다 array[i]이 크면 max = array[i], result = item_hat[i]
                         max = array[i];
                         result = item_hat[i];
                     }
@@ -279,7 +290,7 @@ public class ClosetScreen {
                 if (result.equals("없음"))
                     JOptionPane.showMessageDialog(null, "사용하신 아이템이 없어요");
                 else
-                    JOptionPane.showMessageDialog(null, result + "를 많이 사용하셨네요");
+                    JOptionPane.showMessageDialog(null, "머리는 " + result + "를 많이 사용하셨네요");
 
                 int t1 = Collections.frequency(used_top, item_top[0]);
                 int t2 = Collections.frequency(used_top, item_top[1]);
@@ -290,7 +301,7 @@ public class ClosetScreen {
                 max = array2[0];
                 result = "없음";
                 for(int i=0;i<array2.length;i++) {
-                    if (max <= array2[i]) {
+                    if (max < array2[i]) {
                         //max의 값보다 array[i]이 크면 max = array[i], result = item_hat[i]
                         max = array2[i];
                         result = item_top[i];
@@ -299,7 +310,7 @@ public class ClosetScreen {
                 if (result.equals("없음"))
                     JOptionPane.showMessageDialog(null, "사용하신 아이템이 없어요");
                 else
-                    JOptionPane.showMessageDialog(null, result + "를 많이 사용하셨네요");
+                    JOptionPane.showMessageDialog(null, "상의는 " + result + "를 많이 사용하셨네요");
 
                 int b1 = Collections.frequency(used_bottom, item_bottom[0]);
                 int b2 = Collections.frequency(used_bottom, item_bottom[1]);
@@ -310,7 +321,7 @@ public class ClosetScreen {
                 max = array3[0];
                 result = "없음";
                 for(int i=0;i<array3.length;i++) {
-                    if (max <= array3[i]) {
+                    if (max < array3[i]) {
                         //max의 값보다 array[i]이 크면 max = array[i], result = item_hat[i]
                         max = array3[i];
                         result = item_bottom[i];
@@ -319,7 +330,7 @@ public class ClosetScreen {
                 if (result.equals("없음"))
                     JOptionPane.showMessageDialog(null, "사용하신 아이템이 없어요");
                 else
-                    JOptionPane.showMessageDialog(null, result + "를 많이 사용하셨네요");
+                    JOptionPane.showMessageDialog(null, "하의는 " + result + "를 많이 사용하셨네요");
 
                 int s1 = Collections.frequency(used_shoes, item_shoes[0]);
                 int s2 = Collections.frequency(used_shoes, item_shoes[1]);
@@ -330,7 +341,7 @@ public class ClosetScreen {
                 max = array[0];
                 result = "없음";
                 for(int i=0;i<array4.length;i++) {
-                    if (max <= array4[i]) {
+                    if (max < array4[i]) {
                         //max의 값보다 array[i]이 크면 max = array[i], result = item_hat[i]
                         max = array4[i];
                         result = item_shoes[i];
@@ -339,19 +350,22 @@ public class ClosetScreen {
                 if (result.equals("없음"))
                     JOptionPane.showMessageDialog(null, "사용하신 아이템이 없어요");
                 else
-                    JOptionPane.showMessageDialog(null, result + "를 많이 사용하셨네요");
+                    JOptionPane.showMessageDialog(null, "신발은 " + result + "를 많이 사용하셨네요");
             }
         });
 
+//        확인 버튼 클릭 시
         btName.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+//                입력된 값을 n에 저장하여 DB 에 넣기 위해 setName() 호출.
                 String n = chName.getText();
                 Profile p = new Profile();
                 p.setName(n);
             }
         });
 
+//        count 가 일정 숫자 이상이면 radioButton 활성화 시키고, 자물쇠 -> 옷 이미지로 변경, get 배열에 추가
         if (count >= 1) {
             rd5.setIcon(i5);
             rd5.setEnabled(true);
@@ -434,19 +448,13 @@ public class ClosetScreen {
         }
     }
 
+//    이름이 비었는지, 아이템이 비었는지 확인
     public void nullCheck() {
         String name = chName.getText();
         if (name.equals(""))
             JOptionPane.showMessageDialog(null, "이름을 지정해주세요.");
         if (get_hat.length == 0 || get_top.length == 0 || get_bottom.length == 0 || get_shoes.length == 0)
             JOptionPane.showMessageDialog(null, "아이템이 없습니다.");
-    }
-
-    public void getName() {
-        String name = chName.getText();
-
-        Profile p = new Profile();
-        p.setName(name);
     }
 
     public static void main(String[] args) {

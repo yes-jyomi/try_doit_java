@@ -26,6 +26,7 @@ public class Profile {
             e.printStackTrace();
         }
 
+//        DB 에 있는 prof_num, pwd, name 을 받아옴. -> 세팅
         try {
             String sql = "SELECT prof_num, pwd, name FROM profile WHERE id = ?";
             pstmt = conn.prepareStatement(sql);
@@ -46,10 +47,12 @@ public class Profile {
         }
     }
 
+//    prof_num 반환하는 함수
     public int returnNum() {
         return prof_num;
     }
 
+//    ClosetScreen 에서 작성한 이름 DB 에 넣어주는 함수
     public void setName(String name) {
         try {
             String sql = "INSERT INTO profile(name) VALUES ? WHERE id = ?";
@@ -95,5 +98,28 @@ public class Profile {
                 }
             }
         }
+    }
+
+//    name 반환하는 함수
+    public String getChName() {
+        try {
+            String sql = "SELECT name FROM profile WHERE id = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+            rs = pstmt.executeQuery();
+            if (rs.next())
+                name = rs.getString("name");
+            else
+                JOptionPane.showMessageDialog(null, "이름 없음");
+
+        } catch (SQLException e) {
+            System.out.println("SQLException");
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Exception");
+            e.printStackTrace();
+        }
+
+        return name;
     }
 }

@@ -25,6 +25,7 @@ public class TaskManager {
             e.printStackTrace();
         }
 
+//        DB 에 있는 할 일 내용을 가져와서 tasks 라는 ArrayList 에 넣음
         try {
             String sql = "SELECT content FROM task";
             pstmt = conn.prepareStatement(sql);
@@ -44,6 +45,7 @@ public class TaskManager {
 
     }
 
+//    할 일 DB에 추가하는 함수
     public void addTask(String content) {
         try {
             String sql = "INSERT INTO task(listnum, content) VALUES(?, ?)";
@@ -61,6 +63,7 @@ public class TaskManager {
 
     }
 
+//    할 일 DB 에 업데이트하는 함수
     public void updateTask(int listnum, String content, int percent) {
         int result = checkTask(listnum);
 
@@ -97,6 +100,7 @@ public class TaskManager {
 
     }
 
+//    리스트 번호 반환하는 함수
     public int getListnum(String content) {
         int lm = 0;
 
@@ -119,6 +123,7 @@ public class TaskManager {
         return lm;
     }
 
+//    할 일이 목록에 있는지 확인하는 함수
     public int checkTask(int listnum) {
         int lm = 0;
 
@@ -147,6 +152,7 @@ public class TaskManager {
         return lm;
     }
 
+//    listnum 가져오는 함수
     public int findListnum(String content) {
         int lm = 0;
 
@@ -169,6 +175,7 @@ public class TaskManager {
         return lm;
     }
 
+//    할 일 DB에서 삭제하는 함수
     public int deleteTask(int listnum) {
         int result = checkTask(listnum);
         int r = 0;
@@ -195,6 +202,7 @@ public class TaskManager {
         return r;
     }
 
+//    할 일 완료하는 함수
     public int completeTask(String task) {
         count ++;
 
@@ -210,6 +218,7 @@ public class TaskManager {
         return r;
     }
 
+//    count 반환하는 함수
     public int getCount() {
         return count;
     }

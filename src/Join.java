@@ -22,6 +22,7 @@ public class Join {
         }
     }
 
+//    회원가입하는 함수
     public void signUp(String id, String pwd, String pk) {
         int result = nullCheck(id, pwd, pk);
         try {
@@ -51,6 +52,7 @@ public class Join {
         }
     }
 
+//    이미 가입된 아이디인지 중복 확인
     private int nullCheck(String id, String pwd, String pk) {
         int chk = 0;
         try {
@@ -76,6 +78,7 @@ public class Join {
         return chk;
     }
 
+//    비밀번호와 비밀번호 확인이 같은지 확인
     private int pwdCk(String pwd, String pk) {
         int r = 0;
         if (pwd.equals(pk)) {
